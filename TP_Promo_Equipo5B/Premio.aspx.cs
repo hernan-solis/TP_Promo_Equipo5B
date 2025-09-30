@@ -41,5 +41,14 @@ namespace TP_Promo_Equipo5B
                 }
             }
         }
+
+        //para que el boton de las tarjeta redirija a la pagina del formulario
+        protected void RepRepetidor_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "Seleccionar")
+            {
+                Response.Redirect("Formulario.aspx");
+            }
+        }
     }
 }
