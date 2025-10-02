@@ -46,16 +46,16 @@
                 <label for="txtCP" class="form-label">CP</label>
                 <asp:TextBox ID="txtCP" runat="server" CssClass="form-control" Text="xxxx"></asp:TextBox>
             </div>
-             </div>
-        
-            <div class="row mb-3">
-                <div class="col-md-12">
-                    <div class="form-check">
-                        <asp:CheckBox ID="chkAcepto" runat="server" Text="" CssClass="form-check-input"/>
-                        <asp:Label ID="lblAceptar" runat="server" Text="Acepto terminos y condiciones"></asp:Label>
-                    </div>
-                    <asp:Button ID="btnParticipar" CssClass="btn btn-primary" OnClick="btnParticipar_Click"  runat="server" Text="Participar" />
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <div class="form-check p-0">
+                    <asp:CheckBox ID="chkAcepto" runat="server" Text="Acepto términos y condiciones" />
+                </div>
+                <asp:Button ID="btnParticipar" CssClass="btn btn-primary" OnClick="btnParticipar_Click" runat="server" Text="Participar" />
             </div>
         </div>
+    </div>
 </asp:Content>
 
