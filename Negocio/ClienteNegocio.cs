@@ -16,7 +16,7 @@ namespace Negocio
             try
             {
 
-                Cliente cliente = new Cliente();
+                
                 string consulta = @"SELECT Nombre, Apellido, Email, Direccion, Ciudad, CP FROM Clientes WHERE DOCUMENTO = @dni";
 
                 datos.setearConsulta(consulta);
@@ -26,15 +26,49 @@ namespace Negocio
 
                 if (datos.Lector.Read())
                 {
+                    Cliente cliente = new Cliente(); 
                     cliente.Nombre = (string)datos.Lector["Nombre"];
                     cliente.Apellido = (string)datos.Lector["Apellido"];
                     cliente.Email = (string)datos.Lector["Email"];
                     cliente.Direccion = (string)datos.Lector["Direccion"];
                     cliente.Ciudad = (string)datos.Lector["Ciudad"];
                     cliente.Cp = (int)datos.Lector["CP"];
-                }
 
-                return cliente;
+                    return cliente;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void agregar(Cliente nuevoCliente)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = @"INSERT INTO Clientes (Documento, Nombre, Apellido, Email, Direccion, Ciudad, CP) VALUES (@dni, @nombre, @apellido, @email, @direccion, @ciudad, @cp)";
+
+                datos.setearConsulta(consulta);
+
+                datos.setearParametro("@dni", nuevoCliente.Documento);
+                datos.setearParametro("@nombre", nuevoCliente.Nombre);
+                datos.setearParametro("@apellido", nuevoCliente.Apellido);
+                datos.setearParametro("@email", nuevoCliente.Email);
+                datos.setearParametro("@direccion", nuevoCliente.Direccion);
+                datos.setearParametro("@ciudad", nuevoCliente.Ciudad);
+                datos.setearParametro("@cp", nuevoCliente.Cp); 
+
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {

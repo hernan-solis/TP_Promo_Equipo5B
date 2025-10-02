@@ -54,7 +54,7 @@
                         <asp:CheckBox ID="chkAcepto" runat="server" Text="" CssClass="form-check-input"/>
                         <asp:Label ID="lblAceptar" runat="server" Text="Acepto terminos y condiciones"></asp:Label>
                     </div>
-                    <asp:Button ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click"  runat="server" Text="Aceptar" />
+                    <asp:Button ID="btnParticipar" CssClass="btn btn-primary" OnClick="btnParticipar_Click"  runat="server" Text="Participar" />
             </div>
         </div>
 </asp:Content>

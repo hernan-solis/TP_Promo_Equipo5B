@@ -96,12 +96,12 @@ namespace TP_Promo_Equipo5B
         protected global::System.Web.UI.WebControls.Label lblAceptar;
 
         /// <summary>
-        /// Control btnAceptar.
+        /// Control btnParticipar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAceptar;
+        protected global::System.Web.UI.WebControls.Button btnParticipar;
     }
 }

@@ -38,9 +38,27 @@ namespace TP_Promo_Equipo5B
         }
 
 
-        protected void btnAceptar_Click(object sender, EventArgs e)
+        protected void btnParticipar_Click(object sender, EventArgs e)
         {
-           
+            string dni = txtDocumento.Text;
+
+            ClienteNegocio negocio = new ClienteNegocio();
+
+            Cliente nuevoCliente = new Cliente();
+            nuevoCliente.Documento = dni;
+            nuevoCliente.Nombre = txtNombre.Text;
+            nuevoCliente.Apellido = txtApellido.Text;
+            nuevoCliente.Email = txtEmail.Text;
+            nuevoCliente.Direccion = txtDireccion.Text;
+            nuevoCliente.Ciudad = txtCiudad.Text;
+            nuevoCliente.Cp = int.Parse(txtCP.Text);
+
+            Cliente clienteEncontrado = negocio.BuscarClientePorDNI(dni);
+
+            if (clienteEncontrado == null)
+            {
+                negocio.agregar(clienteEncontrado);
+            }
         }
     }
 }
