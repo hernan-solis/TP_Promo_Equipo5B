@@ -5,7 +5,7 @@
         <div class="row mb-3">
             <div class="col-md-4">
                 <label for="txtDocumento" class="form-label">DNI</label>
-                <asp:TextBox ID="txtDocumento" runat="server" CssClass="form-control" Text="21548796"></asp:TextBox>
+                <asp:TextBox ID="txtDocumento" runat="server" CssClass="form-control" Text="21548796" AutoPostBack="true" OnTextChanged="txtDocumento_TextChanged"></asp:TextBox>
 
             </div>
         </div>
@@ -25,9 +25,10 @@
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend">@</span>
                     <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" Text="email@email.com"></asp:TextBox>
-                 </div>  
+                </div>
             </div>
         </div>
+
         <div class="row mb-3">
 
             <div class="col-md-3">
@@ -45,11 +46,16 @@
                 <label for="txtCP" class="form-label">CP</label>
                 <asp:TextBox ID="txtCP" runat="server" CssClass="form-control" Text="xxxx"></asp:TextBox>
             </div>
-
+             </div>
+        
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <div class="form-check">
+                        <asp:CheckBox ID="chkAcepto" runat="server" Text="" CssClass="form-check-input"/>
+                        <asp:Label ID="lblAceptar" runat="server" Text="Acepto terminos y condiciones"></asp:Label>
+                    </div>
+                    <asp:Button ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click"  runat="server" Text="Aceptar" />
+            </div>
         </div>
-    </div>
-    
-
-
 </asp:Content>
 
