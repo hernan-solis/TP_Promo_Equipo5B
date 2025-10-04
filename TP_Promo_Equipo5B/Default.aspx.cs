@@ -22,16 +22,29 @@ namespace TP_Promo_Equipo5B
 
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
-            VoucherNegocio voucherNegocio = new VoucherNegocio();
-            // Si el codigo es valido(está y no fue usado) en la DB cambia de pagina
-            if (voucherNegocio.codigoValido(tbxCodigoVaucher.Text))
+            try
             {
-                Response.Redirect("Premio.aspx");
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
+
+                VoucherNegocio voucherNegocio = new VoucherNegocio();
+                // Si el codigo es valido(está y no fue usado) en la DB cambia de pagina
+                if (voucherNegocio.codigoValido(tbxCodigoVaucher.Text))
+                {
+                    Response.Redirect("Premio.aspx");
+                }
+                else
+                {
+                    Response.Redirect("CodigoErroneo.aspx");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Response.Redirect("CodigoErroneo.aspx");
+
+                throw ex;
             }
+            
 
 
 
