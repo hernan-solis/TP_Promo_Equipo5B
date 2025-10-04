@@ -64,7 +64,7 @@ namespace TP_Promo_Equipo5B
 
                 if (clienteEncontrado == null)
                 {
-                    negocio.agregar(clienteEncontrado);
+                    negocio.agregar(nuevoCliente);
                 }
             }
             catch (Exception ex)
