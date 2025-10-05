@@ -108,5 +108,10 @@ namespace TP_Promo_Equipo5B
             }
           
         }
+
+        protected void valAceptoRequerido_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = chkAcepto.Checked;
+        }
     }
 }
