@@ -10,7 +10,7 @@ namespace Negocio
 {
     public class ClienteNegocio
     {
-        public Cliente BuscarClientePorDNI(string dni)
+        public Cliente buscarClientePorDNI(string dni)
         {
             AccesoDatos datos = new AccesoDatos();
             try
@@ -80,5 +80,28 @@ namespace Negocio
             }
         }
 
-    }
+        public int ultimoId() {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                int id = 0;
+                string consulta = "SELECT MAX(Id) AS Id FROM Clientes";
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+                if (datos.Lector.Read())
+                {
+                    id = (int)datos.Lector["Id"];
+                }
+                return id;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
 }

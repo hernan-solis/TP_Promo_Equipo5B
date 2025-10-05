@@ -92,12 +92,22 @@ namespace TP_Promo_Equipo5B
                 nuevoCliente.Ciudad = txtCiudad.Text;
                 nuevoCliente.Cp = int.Parse(txtCP.Text);
 
-                Cliente clienteEncontrado = negocio.BuscarClientePorDNI(dni);
+                Cliente clienteEncontrado = negocio.buscarClientePorDNI(dni);
+
+                int idCliente = clienteEncontrado.Id;
 
                 if (clienteEncontrado == null)
                 {
                     negocio.agregar(nuevoCliente);
+
+                    idCliente= negocio.ultimoId();
                 }
+
+                //RECUPERO CODIGO VOUCHER E IDARTICULO
+                string cv = Request.QueryString["cv"].ToString();
+                string idA = Request.QueryString["idA"].ToString();
+
+
 
                 Response.Redirect("Exito.aspx");
             }

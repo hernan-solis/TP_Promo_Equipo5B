@@ -11,7 +11,7 @@
         <div class="row mb-3">
             <div class="col-md-4">
                 <label for="txtDocumento" class="form-label">DNI</label>
-                <asp:TextBox ID="txtDocumento" runat="server" CssClass="form-control" Text="21548796" AutoPostBack="true" OnTextChanged="txtDocumento_TextChanged"></asp:TextBox>
+                <asp:TextBox ID="txtDocumento" runat="server" CssClass="form-control" Text="" placeholder="21548796" AutoPostBack="true" OnTextChanged="txtDocumento_TextChanged"></asp:TextBox>
                 <asp:RequiredFieldValidator CssClass="validacion" ErrorMessage="El DNI es requerido" ControlToValidate="txtDocumento" runat="server" />
                 <asp:RegularExpressionValidator CssClass="validacion" ControlToValidate="txtDocumento" ValidationExpression="^\d{8}$" ErrorMessage="El DNI debe tener exactamente 8 números, sin puntos" runat="server" />
             </div>

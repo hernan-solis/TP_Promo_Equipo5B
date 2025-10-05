@@ -32,7 +32,11 @@ namespace TP_Promo_Equipo5B
                 // Si el codigo es valido(está y no fue usado) en la DB cambia de pagina
                 if (voucherNegocio.codigoValido(tbxCodigoVaucher.Text))
                 {
-                    Response.Redirect("Premio.aspx");
+                    // me llevo el codigo voucher a la siguiente pag
+
+                    string cv = tbxCodigoVaucher.Text;
+
+                    Response.Redirect("Premio.aspx?cv=" + cv);
                 }
                 else
                 {

@@ -47,7 +47,12 @@ namespace TP_Promo_Equipo5B
         {
             if (e.CommandName == "Seleccionar")
             {
-                Response.Redirect("Formulario.aspx");
+                //Primero recupero el Codigo Voucher
+                string cv= Request.QueryString["cv"].ToString();
+                //Luego me llevo el CV y el idArticulo.
+                int idAr = int.Parse(e.CommandArgument.ToString());
+
+                Response.Redirect("Formulario.aspx?cv="+cv+"&idA="+idAr);
             }
         }
     }
