@@ -16,8 +16,8 @@ namespace Negocio
             try
             {
 
-                
-                string consulta = @"SELECT Nombre, Apellido, Email, Direccion, Ciudad, CP FROM Clientes WHERE DOCUMENTO = @dni";
+
+                string consulta = @"SELECT Id, Documento, Nombre, Apellido, Email, Direccion, Ciudad, CP FROM Clientes WHERE DOCUMENTO = @dni";
 
                 datos.setearConsulta(consulta);
                 datos.setearParametro("@dni", dni);
@@ -26,13 +26,16 @@ namespace Negocio
 
                 if (datos.Lector.Read())
                 {
-                    Cliente cliente = new Cliente(); 
+                    Cliente cliente = new Cliente();
+                    cliente.Id = (int)datos.Lector["Id"];
+                    cliente.Documento = (string)datos.Lector["Documento"];
                     cliente.Nombre = (string)datos.Lector["Nombre"];
                     cliente.Apellido = (string)datos.Lector["Apellido"];
                     cliente.Email = (string)datos.Lector["Email"];
                     cliente.Direccion = (string)datos.Lector["Direccion"];
                     cliente.Ciudad = (string)datos.Lector["Ciudad"];
                     cliente.Cp = (int)datos.Lector["CP"];
+                   
 
                     return cliente;
                 }
@@ -66,7 +69,7 @@ namespace Negocio
                 datos.setearParametro("@email", nuevoCliente.Email);
                 datos.setearParametro("@direccion", nuevoCliente.Direccion);
                 datos.setearParametro("@ciudad", nuevoCliente.Ciudad);
-                datos.setearParametro("@cp", nuevoCliente.Cp); 
+                datos.setearParametro("@cp", nuevoCliente.Cp);
 
                 datos.ejecutarAccion();
             }
@@ -80,7 +83,8 @@ namespace Negocio
             }
         }
 
-        public int ultimoId() {
+        public int ultimoId()
+        {
             AccesoDatos datos = new AccesoDatos();
             try
             {
@@ -104,4 +108,5 @@ namespace Negocio
             }
 
         }
+    }
 }

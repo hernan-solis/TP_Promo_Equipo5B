@@ -1,4 +1,6 @@
-﻿using Dominio;
+﻿using dominio;
+using Dominio;
+using negocio;
 using Negocio;
 using System;
 using System.Collections.Generic;
@@ -33,7 +35,7 @@ namespace TP_Promo_Equipo5B
             if (!string.IsNullOrEmpty(dni))
             {
                 ClienteNegocio negocio = new ClienteNegocio();
-                Cliente clienteEncontrado = negocio.BuscarClientePorDNI(dni);
+                Cliente clienteEncontrado = negocio.buscarClientePorDNI(dni);
 
                 if (clienteEncontrado != null)
                 {
@@ -94,19 +96,33 @@ namespace TP_Promo_Equipo5B
 
                 Cliente clienteEncontrado = negocio.buscarClientePorDNI(dni);
 
-                int idCliente = clienteEncontrado.Id;
+                int idCliente;
 
                 if (clienteEncontrado == null)
                 {
                     negocio.agregar(nuevoCliente);
 
-                    idCliente= negocio.ultimoId();
+                    idCliente = negocio.ultimoId();
+                }
+                else { 
+                    idCliente= clienteEncontrado.Id;
                 }
 
                 //RECUPERO CODIGO VOUCHER E IDARTICULO
                 string cv = Request.QueryString["cv"].ToString();
                 string idA = Request.QueryString["idA"].ToString();
 
+                // armo el objeto Voucher antes de actualizar
+
+                Voucher voucher = new Voucher();
+                voucher.Codigo = cv;
+                voucher.IdCliente = idCliente;
+                voucher.IdArticulo = int.Parse(idA);
+                voucher.FechaCanje = DateTime.Now;
+
+                VoucherNegocio voucherNegocio = new VoucherNegocio();
+
+                voucherNegocio.modificar(voucher);
 
 
                 Response.Redirect("Exito.aspx");
