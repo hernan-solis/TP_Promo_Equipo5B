@@ -13,6 +13,16 @@ namespace TP_Promo_Equipo5B
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+            if (!IsPostBack)
+            {
+                txtNombre.Attributes["placeholder"] = "Juanito";
+                txtApellido.Attributes["placeholder"] = "Argento";
+                txtEmail.Attributes["placeholder"] = "juanito@ejemplo.com";
+                txtDireccion.Attributes["placeholder"] = "Mi ciudad";
+                txtCiudad.Attributes["placeholder"] = "Calle 123";
+                txtCP.Attributes["placeholder"] = "5521";
+            }
 
         }
         protected void txtDocumento_TextChanged(object sender, EventArgs e)
@@ -36,8 +46,27 @@ namespace TP_Promo_Equipo5B
 
                     
                 }
+                else
+                {
+                    txtNombre.Text = "";
+                    txtApellido.Text = "";
+                    txtEmail.Text = "";
+                    txtDireccion.Text = "";
+                    txtCiudad.Text = "";
+                    txtCP.Text = "";
+
+                    txtNombre.Attributes["placeholder"] = "Juanito";
+                    txtApellido.Attributes["placeholder"] = "Argento";
+                    txtEmail.Attributes["placeholder"] = "juanito@ejemplo.com";
+                    txtDireccion.Attributes["placeholder"] = "Mi ciudad";
+                    txtCiudad.Attributes["placeholder"] = "Calle 123";
+                    txtCP.Attributes["placeholder"] = "5521";
+                }
                
+                
+
             }
+            
         }
 
 
