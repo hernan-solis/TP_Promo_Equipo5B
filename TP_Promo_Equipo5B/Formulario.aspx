@@ -4,7 +4,7 @@
     <style>
         .validacion {
             color: red;
-            font-size 12px;
+            font-size: 10px;
         }
     </style>
     <div class="container">

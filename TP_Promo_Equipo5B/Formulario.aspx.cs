@@ -17,6 +17,7 @@ namespace TP_Promo_Equipo5B
         }
         protected void txtDocumento_TextChanged(object sender, EventArgs e)
         {
+
             string dni = txtDocumento.Text.Trim();
 
             if (!string.IsNullOrEmpty(dni))
@@ -32,6 +33,8 @@ namespace TP_Promo_Equipo5B
                     txtDireccion.Text = clienteEncontrado.Direccion;
                     txtCiudad.Text = clienteEncontrado.Ciudad;
                     txtCP.Text = clienteEncontrado.Cp.ToString();
+
+                    
                 }
                
             }
@@ -47,7 +50,7 @@ namespace TP_Promo_Equipo5B
                     return;
 
 
-                string dni = txtDocumento.Text;
+                string dni = txtDocumento.Text.Trim();
 
                 ClienteNegocio negocio = new ClienteNegocio();
 
@@ -66,6 +69,8 @@ namespace TP_Promo_Equipo5B
                 {
                     negocio.agregar(nuevoCliente);
                 }
+
+                Response.Redirect("Exito.aspx");
             }
             catch (Exception ex)
             {
